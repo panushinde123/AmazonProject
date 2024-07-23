@@ -1,0 +1,43 @@
+<div>
+<b>AddNewProduct: </b><br>
+<br>
+<label>Name: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </label><input type="text" [(ngModel)]="name"><br>
+<br>
+<label>Price:   &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; </label><input type="number" [(ngModel)]="price"><br>
+<br>
+<label>Quantity:  &nbsp;  &nbsp; &nbsp;   </label>      <input type="number" [(ngModel)]="quantity"><br>
+<br>
+<label>Description: &nbsp;  </label>   <input type="text" [(ngModel)]="description"><br>
+<br>
+<label>Discount:  &nbsp;  &nbsp; &nbsp;   </label>      <input type="number" [(ngModel)]="discount"><br>
+<br>
+<label>Category:  &nbsp;  &nbsp; &nbsp;   </label>      <select [(ngModel)]="catid">
+    <option *ngFor="let c of list1" [value]="c.id">{{c.name}}</option>
+</select>&nbsp; &nbsp; &nbsp; 
+
+<button  (click)="addProduct()">Add Product</button>
+</div>
+<br><br>
+<table border="1">
+   <tr>
+    <th>Sr.No</th>
+    <th>Product Name</th>
+    <th>Price</th>
+    <th>Quantity</th>
+    <th>Description</th>
+    <th>Rating</th>
+    <th>Discount</th>
+    <th>Category</th>
+   </tr>
+   <tr *ngFor="let p of list; let i=index">
+   <td>{{i+1}}</td>
+   <td>{{p.name}}</td>
+   <td>{{p.price|currency:'INR'}}</td>
+   <td>{{p.quantity}}</td>
+   <td>{{p.description}}</td>
+   <td>{{p.rating}}</td>
+   <td>{{p.discount+"%"}}</td>
+   <td>{{p.cname}}</td>
+   </tr>
+</table>
+

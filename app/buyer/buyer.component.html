@@ -1,0 +1,16 @@
+<div><b>..Welcome Shop From Here..</b><br>
+    <br><br>
+    <button (click)="changewhatToshow(1)">Show Products</button>&nbsp;
+    
+    <button (click)="changewhatToshow(2)">Your Cart</button>&nbsp;
+   <!-- <button (click)="changewhatToshow(3)">Back To Home</button>&nbsp;-->
+    <br>
+    </div>
+    <div *ngIf="whatToshow==1">
+        <app-show-product></app-show-product>
+    </div>
+    <div *ngIf="whatToshow==2">
+        <app-cart></app-cart>
+    </div>
+
+   

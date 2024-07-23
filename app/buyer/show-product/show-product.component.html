@@ -1,0 +1,68 @@
+<br>
+<label>Category:  &nbsp;  &nbsp; &nbsp;   </label>      <select [(ngModel)]="categoryid">
+    <option *ngFor="let c of cats" [value]="c.id">{{c.name}}</option>
+</select>&nbsp; &nbsp; &nbsp; 
+<label>MinPrice: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </label><input type="text" [(ngModel)]="minprice">
+&nbsp; &nbsp; &nbsp; 
+<label>MaxPrice:   &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; </label><input type="number" [(ngModel)]="maxprice">
+&nbsp; &nbsp; &nbsp; 
+<label>MinRating:  &nbsp;  &nbsp; &nbsp;   </label>      <input type="number" [(ngModel)]="minrating">
+&nbsp; &nbsp; &nbsp; 
+<button (click)="showProducts()">ShowProducts</button>
+<br><br>
+<table border="1">
+    <tr>
+    <th>SN</th>
+    <th>Name</th>
+    <th>Price</th>
+    <th>Description</th>
+    <th>Discount</th>
+    <th>Rating</th>
+    <th>Status</th>
+    <th>Days</th>
+    <th>FeedBack</th>
+    </tr>
+
+    <tr *ngFor="let p of prods; let i=index">
+        <td>{{i+1}}</td>
+        <td>{{p.name}}</td>
+        <td>{{p.price| currency:'INR'}}</td>
+        <td>{{p.description}}</td>
+        <td>{{p.discount+"%"}}</td>
+        <td>{{p.rating}}</td>
+        <td><ng-container *ngIf="p.quantity==0">OutOfStock</ng-container>
+            <ng-container *ngIf="p.quantity>0">Available</ng-container>
+            <ng-container *ngIf="p.quantity<5">Limited Stock Hurry Up</ng-container></td>
+        <td><ng-container *ngIf="p.days<50">Recently Added</ng-container></td>
+        
+        <td>Feedback :<select [(ngModel)]="p.stars" (change)="updateRating(p)">
+            <option [value]="1">1 Star</option>
+            <option [value]="2">2 Star</option>
+            <option [value]="3">3 Star</option>
+            <option [value]="4">4 Star</option>
+            <option [value]="5">5 Star</option>
+        </select></td>
+        <td><button class="button1" (click)="addToCart(p)">AddToCart</button></td>
+</tr>    
+    
+    
+</table>
+<!-- 
+<table border="1">
+    <tr>
+    <td *ngFor="let p of prods;let i=index">
+        Sr.No: {{i+1}},
+        Name: {{p.name}},
+        Description: {{p.description}},
+        Discount: {{p.discount}},
+        Rating: <ng-container *ngIf="p.rating>4">{{p.rating}}</ng-container>,
+        Quantity: <ng-container *ngIf="p.quantity==0">OutOfStock</ng-container>
+        <ng-container *ngIf="p.quantity>0">Available</ng-container>
+        <ng-container *ngIf="p.quantity>0  and p.quantity<5">Limited Stock Hurry Up</ng-container>,
+        Days:  <ng-container *ngIf="p.days<5">Latest Added</ng-container>
+        
+        
+    </td>
+</tr>
+</table>
+     -->

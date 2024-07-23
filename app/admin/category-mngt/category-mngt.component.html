@@ -1,0 +1,24 @@
+<div><br>
+
+Category: <input type="text" [(ngModel)]="name">&nbsp;
+<button (click)="addCategory()">&nbsp;Add</button>
+<br><br></div>
+<table border="1">
+<tr>
+    <th><h3>Sr.No</h3></th>
+    <th><h3>Category</h3></th>
+    <!-- <th><h3>Added By</h3></th> -->
+    <th><h3>Action</h3></th>
+</tr>
+
+<tr *ngFor="let cat of list; let i=index">
+<td>{{i+1}}</td>
+<td>{{cat.name}}</td>
+<!-- <td>{{cat.uname}}</td> -->
+<td>
+    <button>Delete</button>
+    </td>
+
+</tr>
+</table>
+

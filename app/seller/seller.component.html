@@ -1,0 +1,10 @@
+<div><b>Welcome {{name}}</b><br>
+    <br><br>
+    <button (click)="changewhatToshow(1)">Show Categories</button>
+    <br>
+    </div>
+    <div *ngIf="whatToshow==1">
+        <app-product></app-product>
+    </div>
+    
+    
